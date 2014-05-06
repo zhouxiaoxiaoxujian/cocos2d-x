@@ -295,7 +295,6 @@ void CheckBox::onTouchEnded(Touch *touch, Event *unusedEvent)
     _touchEndPos = touch->getLocation();
     if (_focus)
     {
-        releaseUpEvent();
         if (_isSelected){
             setSelectedState(false);
             unSelectedEvent();
@@ -305,6 +304,7 @@ void CheckBox::onTouchEnded(Touch *touch, Event *unusedEvent)
             setSelectedState(true);
             selectedEvent();
         }
+        releaseUpEvent();
     }
     setFocused(false);
     Widget* widgetParent = getWidgetParent();

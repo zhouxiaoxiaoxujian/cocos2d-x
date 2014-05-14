@@ -134,7 +134,7 @@ void Button::initRenderer()
     _buttonNormalRenderer = Sprite::create();
     _buttonClickedRenderer = Sprite::create();
     _buttonDisableRenderer = Sprite::create();
-    _titleRenderer = Label::create();
+    _titleRenderer = Text::create();
     _titleRenderer->setAnchorPoint(Point::ANCHOR_MIDDLE);
 
     addProtectedChild(_buttonNormalRenderer, NORMAL_RENDERER_Z, -1);
@@ -687,12 +687,12 @@ void Button::setPressedActionEnabled(bool enabled)
 
 void Button::setTitleText(const std::string& text)
 {
-    _titleRenderer->setString(text);
+    _titleRenderer->setText(text);
 }
 
 const std::string& Button::getTitleText() const
 {
-    return _titleRenderer->getString();
+    return _titleRenderer->getStringValue();
 }
 
 void Button::setTitleColor(const Color3B& color)
@@ -708,22 +708,24 @@ const Color3B& Button::getTitleColor() const
 
 void Button::setTitleFontSize(float size)
 {
-    _titleRenderer->setSystemFontSize(size);
+    _titleRenderer->setFontSize(size);
 }
 
 float Button::getTitleFontSize() const
 {
-    return _titleRenderer->getSystemFontSize();
+    return _titleRenderer->getFontSize();
 }
 
 void Button::setTitleFontName(const std::string& fontName)
 {
-    _titleRenderer->setSystemFontName(fontName);
+    _titleRenderer->setFontName(fontName);
+    if (_titleRenderer->getStringLength() > 0)
+        _titleRenderer->enableOutline(::cocos2d::Color4B::BLACK, 1);
 }
 
 const std::string& Button::getTitleFontName() const
 {
-    return _titleRenderer->getSystemFontName();
+    return _titleRenderer->getFontName();
 }
     
 std::string Button::getDescription() const

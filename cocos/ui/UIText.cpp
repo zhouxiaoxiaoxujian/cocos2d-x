@@ -135,7 +135,14 @@ int Text::getFontSize()
 void Text::setFontName(const std::string& name)
 {
     _fontName = name;
-    _labelRenderer->setSystemFontName(name);
+    
+    if (FileUtils::getInstance()->isFileExist(_fontName)) {
+        TTFConfig ttfConfig(_fontName.c_str(),_fontSize,GlyphCollection::DYNAMIC);
+        _labelRenderer->setTTFConfig(ttfConfig);
+    } else {
+        _labelRenderer->setSystemFontName(name);
+    }
+    
     updateContentSizeWithTextureSize(_labelRenderer->getContentSize());
     _labelRendererAdaptDirty = true;
 }
@@ -300,6 +307,9 @@ std::string Text::getDescription() const
 void Text::updateTextureColor()
 {
     updateColorToRenderer(_labelRenderer);
+    const Color3B color = _labelRenderer->getColor();
+    if(this->getStringLength() > 0 &&color.r > 240 && color.g > 240 && color.b > 240)
+        this->enableShadow(::cocos2d::Color4B::BLACK, ::cocos2d::Size(1,-1));
 }
 
 void Text::updateTextureOpacity()
@@ -315,6 +325,21 @@ void Text::updateTextureRGBA()
 Widget* Text::createCloneInstance()
 {
     return Text::create();
+}
+
+void Text::enableShadow(const Color4B& shadowColor,const Size &offset, int blurRadius){
+    _labelRenderer->enableShadow(shadowColor, offset, blurRadius);
+}
+    
+    /** only support for TTF */
+void Text::enableOutline(const Color4B& outlineColor,int outlineSize){
+    _labelRenderer->enableOutline(outlineColor, outlineSize);
+}
+    
+    /** only support for TTF */
+void Text::enableGlow(const Color4B& glowColor)
+{
+    _labelRenderer->enableGlow(glowColor);
 }
 
 void Text::copySpecialProperties(Widget *widget)

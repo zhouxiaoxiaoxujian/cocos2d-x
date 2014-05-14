@@ -26,6 +26,7 @@ THE SOFTWARE.
 #define __UIBUTTON_H__
 
 #include "ui/UIWidget.h"
+#include "ui/UIText.h"
 
 NS_CC_BEGIN
 
@@ -215,7 +216,7 @@ protected:
     Node* _buttonNormalRenderer;
     Node* _buttonClickedRenderer;
     Node* _buttonDisableRenderer;
-    Label* _titleRenderer;
+    ::cocos2d::ui::Text* _titleRenderer;
     std::string _normalFileName;
     std::string _clickedFileName;
     std::string _disabledFileName;

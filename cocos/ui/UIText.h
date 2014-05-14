@@ -139,6 +139,19 @@ public:
 
     TextVAlignment getTextVerticalAlignment();
     
+    /**
+     * Enable shadow for the label
+     *
+     * @todo support blur for shadow effect
+     */
+     void enableShadow(const Color4B& shadowColor = Color4B::BLACK,const Size &offset = Size(2,-2), int blurRadius = 0);
+    
+    /** only support for TTF */
+    void enableOutline(const Color4B& outlineColor,int outlineSize = -1);
+    
+    /** only support for TTF */
+    void enableGlow(const Color4B& glowColor);
+    
 CC_CONSTRUCTOR_ACCESS:
     virtual bool init() override;
     virtual bool init(const std::string& textContent,

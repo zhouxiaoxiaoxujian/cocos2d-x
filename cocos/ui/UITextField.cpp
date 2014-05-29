@@ -562,7 +562,12 @@ void TextField::didNotSelectSelf()
 
 const std::string& TextField::getStringValue()
 {
+    CCLOG("Length %d", _textFieldRenderer->getStringLength());
     return _textFieldRenderer->getString();
+}
+
+int TextField::getStringLength() {
+    return _textFieldRenderer->getStringLength();
 }
 
 bool TextField::onTouchBegan(Touch *touch, Event *unusedEvent)

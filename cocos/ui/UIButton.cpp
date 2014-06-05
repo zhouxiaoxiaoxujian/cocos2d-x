@@ -718,6 +718,8 @@ int Button::getTitleFontSize() const
 void Button::setTitleFontName(const std::string& fontName)
 {
     _titleRenderer->setFontName(fontName);
+    if (_titleRenderer->getStringLength() > 0)
+        _titleRenderer->enableOutline(::cocos2d::Color4B::BLACK, 1);
 }
 
 const std::string& Button::getTitleFontName() const

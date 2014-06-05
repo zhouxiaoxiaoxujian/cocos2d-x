@@ -26,6 +26,7 @@ THE SOFTWARE.
 #define __UIBUTTON_H__
 
 #include "ui/UIWidget.h"
+#include "UIText.h"
 
 NS_CC_BEGIN
 
@@ -180,8 +181,8 @@ public:
     const std::string& getTitleText() const;
     void setTitleColor(const Color3B& color);
     const Color3B& getTitleColor() const;
-    void setTitleFontSize(float size);
-    float getTitleFontSize() const;
+    void setTitleFontSize(int size);
+    int getTitleFontSize() const;
     void setTitleFontName(const std::string& fontName);
     const std::string& getTitleFontName() const;
     
@@ -215,7 +216,7 @@ protected:
     Node* _buttonNormalRenderer;
     Node* _buttonClickedRenderer;
     Node* _buttonDisableRenderer;
-    Label* _titleRenderer;
+    ::cocos2d::ui::Text* _titleRenderer;
     std::string _normalFileName;
     std::string _clickedFileName;
     std::string _disabledFileName;

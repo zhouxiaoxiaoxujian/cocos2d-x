@@ -133,7 +133,7 @@ void Button::initRenderer()
     _buttonNormalRenderer = Sprite::create();
     _buttonClickedRenderer = Sprite::create();
     _buttonDisableRenderer = Sprite::create();
-    _titleRenderer = Label::create();
+    _titleRenderer = ::cocos2d::ui::Text::create();
     _titleRenderer->setAnchorPoint(Vec2::ANCHOR_MIDDLE);
 
     addProtectedChild(_buttonNormalRenderer, NORMAL_RENDERER_Z, -1);
@@ -705,24 +705,24 @@ const Color3B& Button::getTitleColor() const
     return _titleRenderer->getColor();
 }
 
-void Button::setTitleFontSize(float size)
+void Button::setTitleFontSize(int size)
 {
-    _titleRenderer->setSystemFontSize(size);
+    _titleRenderer->setFontSize(size);
 }
 
-float Button::getTitleFontSize() const
+int Button::getTitleFontSize() const
 {
-    return _titleRenderer->getSystemFontSize();
+    return _titleRenderer->getFontSize();
 }
 
 void Button::setTitleFontName(const std::string& fontName)
 {
-    _titleRenderer->setSystemFontName(fontName);
+    _titleRenderer->setFontName(fontName);
 }
 
 const std::string& Button::getTitleFontName() const
 {
-    return _titleRenderer->getSystemFontName();
+    return _titleRenderer->getFontName();
 }
     
 std::string Button::getDescription() const

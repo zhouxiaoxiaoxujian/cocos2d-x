@@ -325,6 +325,9 @@ namespace ui {
     void Text::updateTextureColor()
     {
         updateColorToRenderer(_labelRenderer);
+        const Color3B color = _labelRenderer->getColor();
+        if(this->getStringLength() > 0 &&color.r > 240 && color.g > 240 && color.b > 240)
+            this->enableShadow(::cocos2d::Color4B::BLACK, ::cocos2d::Size(1,-1));
     }
     
     void Text::updateTextureOpacity()

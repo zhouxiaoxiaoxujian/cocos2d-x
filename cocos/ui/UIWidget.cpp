@@ -902,6 +902,8 @@ void Widget::setOpacity(GLubyte opacity)
 {
     _opacity = opacity;
     updateTextureOpacity();
+    ProtectedNode::setOpacity(opacity);
+    ProtectedNode::setCascadeOpacityEnabled(true);
 }
     
 void Widget::setFlippedX(bool flippedX)

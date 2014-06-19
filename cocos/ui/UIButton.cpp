@@ -136,6 +136,7 @@ void Button::initRenderer()
     _buttonDisableRenderer = Sprite::create();
     _titleRenderer = Text::create();
     _titleRenderer->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    _titleRenderer->setCascadeOpacityEnabled(true);
 
     addProtectedChild(_buttonNormalRenderer, NORMAL_RENDERER_Z, -1);
     addProtectedChild(_buttonClickedRenderer, PRESSED_RENDERER_Z, -1);
